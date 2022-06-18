@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PlayersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('players')->group(function () {
+    Route::get('/', [PlayersController::class, "index"]);
+    Route::get('/edit/{id}', [PlayersController::class, "edit"]);
+
+});

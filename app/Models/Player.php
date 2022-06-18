@@ -17,4 +17,14 @@ class Player extends Model
         return $this->belongsToMany(Position::class, 'player_position');
     }
 
+    public function club(): Relations\BelongsTo
+    {
+        return $this->belongsTo(Club::class);
+    }
+
+    public function nationality(): Relations\BelongsTo
+    {
+        return $this->belongsTo(Nationality::class);
+    }
+
 }
