@@ -31,7 +31,7 @@
                                     <strong>Weight: </strong> {{ $player->weight }} kg
                                 </p>
                             </div>
-                            @if (Auth::user()->id === $player->club->trainer_id)
+                            @if (Auth::user() && Auth::user()->id === $player->club->trainer_id)
                                 <div>
                                     <a href="{{url()->current()}}/edit/{{$player->id}}" class="btn btn-primary mx-1">Edit</a>
                                     <a href="{{url()->current()}}/delete/{{$player->id}}" class="btn btn-danger mx-1">Remove</a>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClubsControler;
 use App\Http\Controllers\PlayersController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,4 +34,8 @@ Route::prefix('players')->group(function () {
     Route::get('/create', [PlayersController::class, "create"]);
     Route::post('/add', [PlayersController::class, "add"]);
     Route::get('/delete/{id}', [PlayersController::class, "delete"]);
+});
+
+Route::prefix('clubs')->group(function () {
+    Route::get('/', [ClubsControler::class, "index"]);
 });

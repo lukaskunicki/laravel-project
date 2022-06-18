@@ -17,9 +17,9 @@ class Club extends Model
         return $this->hasMany(Player::class);
     }
 
-    public function trainer(): Relations\HasOne
+    public function trainer(): Relations\BelongsTo
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function league(): Relations\BelongsTo
