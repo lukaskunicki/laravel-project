@@ -6,43 +6,39 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        Edit {{ $player->name }} {{ $player->lastname }}
+                        Add a new Player
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="/players/update/{{$player->id}}">
+                        <form method="POST" action="/players/add">
                             @csrf
                             <div class="form-row d-flex justify-content-between">
                                 <div class="form-group col-md-6 p-2">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Name"
-                                           value="{{$player->name}}">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                                 </div>
                                 <div class="form-group col-md-6 p-2">
                                     <label for="name">Lastname</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Name" name="lastname"
-                                           value="{{$player->lastname}}">
+                                    <input type="text" class="form-control" id="name" placeholder="Name"
+                                           name="lastname">
                                 </div>
                             </div>
                             <div class="form-group p-2">
                                 <label for="height">Height</label>
-                                <input type="number" min="150" max="220" class="form-control" id="height" name="height"
-                                       value="{{$player->height}}">
+                                <input type="number" min="150" max="220" class="form-control" id="height" name="height">
                             </div>
                             <div class="form-group p-2">
                                 <label for="weight">Weight</label>
-                                <input type="number" min="50" max="130" class="form-control" id="weight" name="weight"
-                                       value="{{$player->weight}}">
+                                <input type="number" min="50" max="130" class="form-control" id="weight" name="weight">
                             </div>
                             <div class="form-group p-2">
                                 <label for="birth-date">Birth date</label>
-                                <input type="date" class="form-control" id="birth-date" value="{{$player->born_date}}"
-                                       name="born_date">
+                                <input type="date" class="form-control" id="birth-date" name="born_date">
                             </div>
                             <div class="form-group p-2">
                                 <label for="nationality">Nation</label>
                                 <select id="nationality" class="form-control" name="nationality_id">
                                     @foreach($nationalities as $nation)
-                                        <option @if ($nation->id === $player->nationality->id) selected @endif value="{{$nation->id}}">{{$nation->name}}</option>
+                                        <option value="{{$nation->id}}">{{$nation->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -50,7 +46,7 @@
                                 <label for="club">Club</label>
                                 <select id="club" class="form-control" name="club_id">
                                     @foreach($clubs as $club)
-                                        <option @if ($club->id === $player->club->id) selected @endif  value="{{$club->id}}">{{$club->name}}</option>
+                                        <option value="{{$club->id}}">{{$club->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -59,15 +55,15 @@
                                 @foreach($positions as $pos)
                                     <div class="form-check">
                                         <input class="form-check-input"
-                                               @if (in_array($pos->name, $player->positions->pluck('name')->toArray())) checked
-                                               @endif type="checkbox" name="position_id_{{$pos->id}}" id="{{$pos->name}}" value="{{$pos->id}}">
+                                               type="checkbox" name="position_id_{{$pos->id}}" id="{{$pos->name}}"
+                                               value="{{$pos->id}}">
                                         <label class="form-check-label" for="{{$pos->name}}">
                                             {{$pos->name}}
                                         </label>
                                     </div>
                                 @endforeach
                             </div>
-                            <button type="submit" class="btn btn-primary m-3 px-5">Edit</button>
+                            <button type="submit" class="btn btn-primary m-3 px-5">Create</button>
                         </form>
 
                     </div>

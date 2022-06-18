@@ -29,5 +29,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('players')->group(function () {
     Route::get('/', [PlayersController::class, "index"]);
     Route::get('/edit/{id}', [PlayersController::class, "edit"]);
-
+    Route::post('/update/{id}', [PlayersController::class, "update"]);
+    Route::get('/create', [PlayersController::class, "create"]);
+    Route::post('/add', [PlayersController::class, "add"]);
+    Route::get('/delete/{id}', [PlayersController::class, "delete"]);
 });
