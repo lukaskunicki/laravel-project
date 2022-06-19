@@ -18,9 +18,25 @@ class PlayersController extends Controller
 
         return view("players.index",
             [
+                "title" => "All players",
                 "players" => $players
             ]);
     }
+
+    public function fromClub(int $id)
+    {
+        $players = Player::with(['positions', 'club', 'nationality'])->where('is_active', '=', true)->where('club_id', '=', $id)->get();
+        $club = Club::find($id);
+        if (!(isset($club->name))) {
+            return redirect("/players", 301);
+        }
+        return view("players.index",
+            [
+                "title" => "All players from " . Club::find($id)->name,
+                "players" => $players
+            ]);
+    }
+
 
     public function edit(int $id)
     {
@@ -99,7 +115,7 @@ class PlayersController extends Controller
         if ($club->trainer_id !== $userId) redirect("/players", 301);
     }
 
-    protected function populateFields($player, Request $request) : void
+    protected function populateFields($player, Request $request): void
     {
         $player->name = $request->input("name");
         $player->lastname = $request->input("lastname");

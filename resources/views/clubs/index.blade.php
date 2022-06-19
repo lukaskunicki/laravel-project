@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             @foreach($clubs as $club)
-                <div class="col-md-3">
+                <div class="col-md-4 my-3">
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title">{{ $club->name }}</h3>
@@ -20,18 +20,21 @@
                                 <p>
                                     <strong>Trainer: </strong>
                                     {{ $club->trainer->name }}
-                                    {{ $club->trainer->email }}
+                                </p>
+                                <p>
+                                    <strong>Trainer contact: </strong>
+                                    <a href="mailto:{{ $club->trainer->email }}">{{ $club->trainer->email }}</a>
                                 </p>
                             </div>
                             <div>
-                                <a href="/players/club/{{$club->id}}" class="btn btn-primary mx-1">Show players</a>
-                            </div>
-                            @if (Auth::user() && Auth::user()->id === $club->trainer_id)
-                                <div>
-                                    <a href="{{url()->current()}}/edit/{{$club->id}}" class="btn btn-primary mx-1">Edit</a>
+                                <a href="/players/club/{{$club->id}}" class="btn btn-success mx-1">Show players</a>
+                                @if (Auth::user() && Auth::user()->id === $club->trainer_id)
+                                    <a href="{{url()->current()}}/edit/{{$club->id}}"
+                                       class="btn btn-primary mx-1">Edit</a>
                                     <a href="{{url()->current()}}/delete/{{$club->id}}" class="btn btn-danger mx-1">Remove</a>
-                                </div>
-                            @endif
+                                @endif
+
+                            </div>
                         </div>
                     </div>
                 </div>

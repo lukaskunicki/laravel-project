@@ -2,9 +2,12 @@
 
 @section('content')
     <div class="container">
+        <h1 class="py-5">{{ $title }}</h1>
+    </div>
+    <div class="container">
         <div class="row justify-content-center">
             @foreach($players as $player)
-                <div class="col-md-3">
+                <div class="col-md-3 my-3">
                     <div class="card">
                         <img src="https://via.placeholder.com/100" alt="...">
                         <div class="card-body">

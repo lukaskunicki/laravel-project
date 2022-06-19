@@ -29,13 +29,22 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('players')->group(function () {
     Route::get('/', [PlayersController::class, "index"]);
-    Route::get('/edit/{id}', [PlayersController::class, "edit"]);
-    Route::post('/update/{id}', [PlayersController::class, "update"]);
-    Route::get('/create', [PlayersController::class, "create"]);
-    Route::post('/add', [PlayersController::class, "add"]);
-    Route::get('/delete/{id}', [PlayersController::class, "delete"]);
+    Route::get('/club/{id}', [PlayersController::class, "fromClub"]);
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/edit/{id}', [PlayersController::class, "edit"]);
+        Route::post('/update/{id}', [PlayersController::class, "update"]);
+        Route::get('/create', [PlayersController::class, "create"]);
+        Route::post('/add', [PlayersController::class, "add"]);
+        Route::get('/delete/{id}', [PlayersController::class, "delete"]);
+    });
 });
 
 Route::prefix('clubs')->group(function () {
     Route::get('/', [ClubsControler::class, "index"]);
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/edit/{id}', [ClubsControler::class, "edit"]);
+        Route::get('/create', [ClubsControler::class, "create"]);
+        Route::post('/add', [ClubsControler::class, "add"]);
+        Route::get('/delete/{id}', [ClubsControler::class, "delete"]);
+    });
 });

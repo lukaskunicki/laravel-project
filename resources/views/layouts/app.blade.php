@@ -40,6 +40,36 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" v-pre>
+                            Players
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/players/">
+                                All players
+                            </a>
+                            <a class="dropdown-item" href="/players/create">
+                                New player
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" v-pre>
+                            Clubs
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/clubs/">
+                                All Clubs
+                            </a>
+                            <a class="dropdown-item" href="/clubs/create">
+                                New Club
+                            </a>
+                        </div>
+                    </li>
                     <!-- Authentication Links -->
                     @guest
                         @if (Route::has('login'))
@@ -54,21 +84,6 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false" v-pre>
-                                Players
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/players/">
-                                    All players
-                                </a>
-                                <a class="dropdown-item" href="/players/create">
-                                    New player
-                                </a>
-                            </div>
-                        </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
