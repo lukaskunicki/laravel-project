@@ -4,8 +4,25 @@
     <div class="container">
         <h1 class="py-5">{{ $title }}</h1>
     </div>
-    <div class="container">
-        <div class="row justify-content-center">
+    @if ($title === 'All players')
+    <div class="container" id="search-container">
+        <div class="row">
+            <div class="col-sm-3 d-flex justify-content-between mt-2 mb-4">
+                <div class="form-outline">
+                    <label class="form-label" for="search">Search</label>
+                    <input type="search" class="form-control" data-endpoint="/players/search/"/>
+                </div>
+                <div class="d-flex align-items-end">
+                    <button type="button" class="btn btn-primary">
+                        Find
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+    <div class="container my-5">
+        <div class="row justify-content-center" id="search-results" data-template="player">
             @foreach($players as $player)
                 <div class="col-md-3 my-3">
                     <div class="card">

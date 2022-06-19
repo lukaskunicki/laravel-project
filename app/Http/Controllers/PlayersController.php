@@ -23,6 +23,16 @@ class PlayersController extends Controller
             ]);
     }
 
+    public function search(string $search)
+    {
+        $players = Player::with(['positions', 'club', 'nationality'])
+            ->where("name", "LIKE", "%{$search}%")
+            ->orWhere("lastname", "LIKE", "%{$search}%")
+            ->get();
+
+        return $players;
+    }
+
     public function fromClub(int $id)
     {
         $players = Player::with(['positions', 'club', 'nationality'])->where('is_active', '=', true)->where('club_id', '=', $id)->get();

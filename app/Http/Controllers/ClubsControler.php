@@ -20,6 +20,15 @@ class ClubsControler extends Controller
             ]);
     }
 
+    public function search(string $search)
+    {
+        $clubs = Club::with(['players', 'league', 'trainer'])
+            ->where("name", "LIKE", "%{$search}%")
+            ->get();
+
+        return $clubs;
+    }
+
     public function create()
     {
         $leagues = League::where('is_active', '=', true)->get();

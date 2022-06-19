@@ -1,8 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
+    <div class="container" id="search-container">
+        <div class="row">
+            <div class="col-sm-3 d-flex justify-content-between mt-2 mb-4">
+                <div class="form-outline">
+                    <label class="form-label" for="search">Search</label>
+                    <input type="search" class="form-control" data-endpoint="/clubs/search/"/>
+                </div>
+                <div class="d-flex align-items-end">
+                    <button type="button" class="btn btn-primary">
+                        Find
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container my-5">
+        <div class="row justify-content-center" id="search-results" data-template="club">
             @foreach($clubs as $club)
                 <div class="col-md-4 my-3">
                     <div class="card">

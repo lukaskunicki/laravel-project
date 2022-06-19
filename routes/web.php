@@ -33,6 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('players')->group(function () {
     Route::get('/', [PlayersController::class, "index"]);
     Route::get('/club/{id}', [PlayersController::class, "fromClub"]);
+    Route::get('/search/{search}', [PlayersController::class, "search"]);
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/create', [PlayersController::class, "create"]);
         Route::post('/add', [PlayersController::class, "add"]);
@@ -44,6 +45,7 @@ Route::prefix('players')->group(function () {
 
 Route::prefix('clubs')->group(function () {
     Route::get('/', [ClubsControler::class, "index"]);
+    Route::get('/search/{search}', [ClubsControler::class, "search"]);
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/create', [ClubsControler::class, "create"]);
         Route::post('/add', [ClubsControler::class, "add"]);
