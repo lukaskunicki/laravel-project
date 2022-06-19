@@ -79,9 +79,28 @@
                             <a class="dropdown-item" href="/leagues/">
                                 All Leagues
                             </a>
-                            <a class="dropdown-item" href="/leagues/create">
-                                New League
+                            @if(Auth::user() && Auth::user()->is_admin)
+                                <a class="dropdown-item" href="/leagues/create">
+                                    New League
+                                </a>
+                            @endif
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" v-pre>
+                            Positions
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/positions/">
+                                All Positions
                             </a>
+                            @if(Auth::user() && Auth::user()->is_admin)
+                                <a class="dropdown-item" href="/positions/create">
+                                    New Position
+                                </a>
+                            @endif
                         </div>
                     </li>
                     <!-- Authentication Links -->
