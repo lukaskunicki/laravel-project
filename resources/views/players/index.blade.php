@@ -9,7 +9,6 @@
             @foreach($players as $player)
                 <div class="col-md-3 my-3">
                     <div class="card">
-                        <img src="https://via.placeholder.com/100" alt="...">
                         <div class="card-body">
                             <h3 class="card-title">{{ $player->name }} {{ $player->lastname }} </h3>
                             <div class="card-text pt-3">

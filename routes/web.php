@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClubsControler;
 use App\Http\Controllers\LeaguesController;
+use App\Http\Controllers\NationalitiesController;
 use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\PositionsController;
 use Illuminate\Support\Facades\Route;
@@ -73,5 +74,17 @@ Route::prefix('positions')->group(function () {
         Route::get('/edit/{id}', [PositionsController::class, "edit"]);
         Route::get('/remove/{id}', [PositionsController::class, "delete"]);
         Route::post('/update/{id}', [PositionsController::class, "update"]);
+    });
+});
+
+Route::prefix('nationalities')->group(function () {
+    Route::get('/', [NationalitiesController::class, "index"]);
+    Route::get('/players/{id}', [NationalitiesController::class, "playersWithNationality"]);
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/create', [NationalitiesController::class, "create"]);
+        Route::post('/add', [NationalitiesController::class, "add"]);
+        Route::get('/edit/{id}', [NationalitiesController::class, "edit"]);
+        Route::get('/remove/{id}', [NationalitiesController::class, "delete"]);
+        Route::post('/update/{id}', [NationalitiesController::class, "update"]);
     });
 });
