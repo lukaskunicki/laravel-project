@@ -49,9 +49,11 @@
                             <a class="dropdown-item" href="/players/">
                                 All players
                             </a>
-                            <a class="dropdown-item" href="/players/create">
-                                New player
-                            </a>
+                            @if(Auth::user() && Auth::user()->is_admin)
+                                <a class="dropdown-item" href="/players/create">
+                                    New player
+                                </a>
+                            @endif
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -64,9 +66,11 @@
                             <a class="dropdown-item" href="/clubs/">
                                 All Clubs
                             </a>
-                            <a class="dropdown-item" href="/clubs/create">
-                                New Club
-                            </a>
+                            @if(Auth::user() && Auth::user()->is_admin)
+                                <a class="dropdown-item" href="/clubs/create">
+                                    New Club
+                                </a>
+                            @endif
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -99,6 +103,23 @@
                             @if(Auth::user() && Auth::user()->is_admin)
                                 <a class="dropdown-item" href="/positions/create">
                                     New Position
+                                </a>
+                            @endif
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" v-pre>
+                            Nationalities
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/nationalities/">
+                                All Nationalities
+                            </a>
+                            @if(Auth::user() && Auth::user()->is_admin)
+                                <a class="dropdown-item" href="/nationalities/create">
+                                    New Nationality
                                 </a>
                             @endif
                         </div>
