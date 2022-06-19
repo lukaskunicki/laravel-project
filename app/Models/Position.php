@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Relations;
 class Position extends Model
 {
     use HasFactory;
+
     protected $fillable = ['name', 'shortcut'];
 
-    public function players (): Relations\BelongsToMany
+    public function players(): Relations\BelongsToMany
     {
-        return $this->belongsToMany(Player::class,'player_position');
+        return $this->belongsToMany(Player::class, 'player_position');
     }
 }

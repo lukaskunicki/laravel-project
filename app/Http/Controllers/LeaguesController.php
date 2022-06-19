@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LeaguesController extends Controller
 {
-
     public function index()
     {
         $leagues = League::with(['clubs'])->where('is_active', '=', true)->get();

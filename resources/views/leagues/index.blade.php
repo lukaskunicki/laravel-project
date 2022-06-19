@@ -25,9 +25,9 @@
                             <div>
                                 <a href="/leagues/clubs/{{$league->id}}" class="btn btn-success mx-1">Show clubs</a>
                                 @if (Auth::user() && Auth::user()->is_admin)
-                                    <a href="{{url()->current()}}/remove/{{$league->id}}"
+                                    <a href="/leagues/edit/{{$league->id}}"
                                        class="btn btn-primary mx-1">Edit</a>
-                                    <a href="{{url()->current()}}/delete/{{$league->id}}" class="btn btn-danger mx-1">Remove</a>
+                                    <a href="/leagues/remove/{{$league->id}}" class="btn btn-danger mx-1">Remove</a>
                                 @endif
                             </div>
                         </div>
