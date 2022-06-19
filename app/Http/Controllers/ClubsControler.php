@@ -52,6 +52,15 @@ class ClubsControler extends Controller
         return redirect("/clubs", 301);
     }
 
+    public function update(Request $request, int $id)
+    {
+        $club = Club::find($id);
+        $this->secureUserPrivileges($club);
+        $this->populateFields($club, $request);
+        $club->save();
+        return redirect("/clubs", 301);
+    }
+
     public function delete($id)
     {
         $club = Club::find($id);

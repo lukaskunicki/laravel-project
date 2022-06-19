@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClubsControler;
+use App\Http\Controllers\LeaguesController;
 use App\Http\Controllers\PlayersController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,5 +47,18 @@ Route::prefix('clubs')->group(function () {
         Route::get('/create', [ClubsControler::class, "create"]);
         Route::post('/add', [ClubsControler::class, "add"]);
         Route::get('/delete/{id}', [ClubsControler::class, "delete"]);
+        Route::post('/update/{id}', [ClubsControler::class, "update"]);
+    });
+});
+
+Route::prefix('leagues')->group(function () {
+    Route::get('/', [LeaguesController::class, "index"]);
+    Route::get('/clubs/{id}', [LeaguesController::class, "clubsInLeague"]);
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/edit/{id}', [LeaguesController::class, "edit"]);
+        Route::get('/create', [LeaguesController::class, "create"]);
+        Route::post('/add', [LeaguesController::class, "add"]);
+        Route::get('/remove/{id}', [LeaguesController::class, "delete"]);
+        Route::post('/update/{id}', [LeaguesController::class, "update"]);
     });
 });

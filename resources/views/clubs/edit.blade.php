@@ -27,7 +27,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-primary m-3 px-5">Create</button>
+                            <button type="submit" class="btn btn-primary m-3 px-5">Edit</button>
                         </form>
                     </div>
                 </div>

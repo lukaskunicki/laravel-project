@@ -45,7 +45,6 @@
                            aria-haspopup="true" aria-expanded="false" v-pre>
                             Players
                         </a>
-
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/players/">
                                 All players
@@ -67,6 +66,21 @@
                             </a>
                             <a class="dropdown-item" href="/clubs/create">
                                 New Club
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" v-pre>
+                            Leagues
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/leagues/">
+                                All Leagues
+                            </a>
+                            <a class="dropdown-item" href="/leagues/create">
+                                New League
                             </a>
                         </div>
                     </li>
