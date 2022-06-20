@@ -13,11 +13,11 @@
                             @csrf
                             <div class="form-group p-2">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{$club->name}}">
+                                <input required type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{$club->name}}">
                             </div>
                             <div class="form-group p-2">
                                 <label for="foundation_date">Foundation date</label>
-                                <input type="date" class="form-control" id="foundation_date" name="foundation_date" value="{{$club->foundation_date}}">
+                                <input required type="date" class="form-control" id="foundation_date" name="foundation_date" value="{{$club->foundation_date}}">
                             </div>
                             <div class="form-group p-2">
                                 <label for="league">League</label>

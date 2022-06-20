@@ -14,28 +14,28 @@
                             <div class="form-row d-flex justify-content-between">
                                 <div class="form-group col-md-6 p-2">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Name"
+                                    <input required type="text" class="form-control" id="name" name="name" placeholder="Name"
                                            value="{{$player->name}}">
                                 </div>
                                 <div class="form-group col-md-6 p-2">
                                     <label for="name">Lastname</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Name" name="lastname"
+                                    <input required type="text" class="form-control" id="name" placeholder="Name" name="lastname"
                                            value="{{$player->lastname}}">
                                 </div>
                             </div>
                             <div class="form-group p-2">
                                 <label for="height">Height</label>
-                                <input type="number" min="150" max="220" class="form-control" id="height" name="height"
+                                <input required type="number" min="150" max="220" class="form-control" id="height" name="height"
                                        value="{{$player->height}}">
                             </div>
                             <div class="form-group p-2">
                                 <label for="weight">Weight</label>
-                                <input type="number" min="50" max="130" class="form-control" id="weight" name="weight"
+                                <input required type="number" min="50" max="130" class="form-control" id="weight" name="weight"
                                        value="{{$player->weight}}">
                             </div>
                             <div class="form-group p-2">
                                 <label for="birth-date">Birth date</label>
-                                <input type="date" class="form-control" id="birth-date" value="{{$player->born_date}}"
+                                <input required type="date" class="form-control" id="birth-date" value="{{$player->born_date}}"
                                        name="born_date">
                             </div>
                             <div class="form-group p-2">

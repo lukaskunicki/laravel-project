@@ -13,7 +13,7 @@
                             @csrf
                             <div class="form-group p-2">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{$nationality->name}}">
+                                <input required type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{$nationality->name}}">
                             </div>
                             <button type="submit" class="btn btn-primary m-3 px-5">Edit</button>
                         </form>
