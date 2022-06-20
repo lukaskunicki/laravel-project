@@ -15,7 +15,7 @@ class LeaguesController extends Controller
 
         return view("leagues.index",
             [
-                "title" => "Leagues",
+                "title" => "All Leagues",
                 "leagues" => $leagues
             ]);
     }
@@ -24,9 +24,10 @@ class LeaguesController extends Controller
     {
         $league = League::find($id);
         if (!$league) return redirect('/leagues');
-        $clubs = Club::with(['players', 'league', 'trainer'])->where('league_id', '=', $league->id)->where('is_active', '=', true)->get();
+        $clubs = Club::with(['players', 'league', 'trainer'])->where('league_id', '=', $league->id)->where('is_active', '=', 1)->get();
         return view("clubs.index",
             [
+                "title" => "Clubs in " . $league->name,
                 "clubs" => $clubs
             ]);
     }
@@ -38,6 +39,7 @@ class LeaguesController extends Controller
         $league = League::find($id);
         return view("leagues.edit",
             [
+                "title" => "Edit ". $league->name . " league",
                 "league" => $league
             ]);
     }
@@ -49,6 +51,7 @@ class LeaguesController extends Controller
 
     public function add(Request $request)
     {
+        $this->validateFields($request);
         $league = new League();
         $league->created_at = date('Y-m-d G:i:s');
         $this->populateFields($league, $request);
@@ -58,6 +61,7 @@ class LeaguesController extends Controller
 
     public function update(Request $request, int $id)
     {
+        $this->validateFields($request);
         $this->secureUserPrivileges();
         $league = League::find($id);
         $this->populateFields($league, $request);
@@ -78,6 +82,15 @@ class LeaguesController extends Controller
     protected function secureUserPrivileges(): void
     {
         if (!Auth::user()->is_admin) redirect("/leagues", 301);
+    }
+
+    protected function validateFields(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+        ]);
     }
 
     protected function populateFields($league, Request $request): void

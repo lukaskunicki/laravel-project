@@ -10290,6 +10290,16 @@ textarea.form-control-lg {
     opacity: 1;
   }
 }
+@-webkit-keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 #search-results .searching-animation {
   width: 100%;
   text-align: center;
@@ -10298,4 +10308,10 @@ textarea.form-control-lg {
   opacity: 1;
   -webkit-animation: fade 0.5s linear;
           animation: fade 0.5s linear;
+}
+
+.ball-wrapper img {
+  max-width: 100px;
+  -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
 }

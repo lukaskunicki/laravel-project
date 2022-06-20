@@ -16,7 +16,8 @@ class ClubsControler extends Controller
 
         return view("clubs.index",
             [
-                "clubs" => $clubs
+                "clubs" => $clubs,
+                "title" => "All clubs"
             ]);
     }
 
@@ -36,24 +37,27 @@ class ClubsControler extends Controller
         return view("clubs.create",
             [
                 "leagues" => $leagues,
+                "title" => "New Club"
             ]);
     }
 
     public function edit(int $id)
     {
-        $clubs = Club::with(['players', 'league', 'trainer'])->find($id);
+        $club = Club::with(['players', 'league', 'trainer'])->find($id);
         $leagues = League::where('is_active', '=', true)->get();
 
         return view("clubs.edit",
             [
-                "club" => $clubs,
+                "club" => $club,
                 "leagues" => $leagues,
+                "title" => "Edit " . $club->name ." club"
             ]);
     }
 
 
     public function add(Request $request)
     {
+        $this->validateFields($request);
         $club = new Club();
         $club->created_at = date('Y-m-d G:i:s');
         $this->populateFields($club, $request);
@@ -63,6 +67,7 @@ class ClubsControler extends Controller
 
     public function update(Request $request, int $id)
     {
+        $this->validateFields($request);
         $club = Club::find($id);
         $this->secureUserPrivileges($club);
         $this->populateFields($club, $request);
@@ -83,6 +88,15 @@ class ClubsControler extends Controller
     {
         $userId = Auth::id();
         if ($club->trainer_id !== $userId) redirect("/clubs", 301);
+    }
+
+    protected function validateFields(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'foundation_date' => 'required|date',
+            'league_id' => 'required',
+        ]);
     }
 
     protected function populateFields($club, Request $request): void

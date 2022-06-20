@@ -44,9 +44,9 @@
                             <div>
                                 <a href="/players/club/{{$club->id}}" class="btn btn-success mx-1">Show players</a>
                                 @if (Auth::user() && Auth::user()->id === $club->trainer_id)
-                                    <a href="{{url()->current()}}/edit/{{$club->id}}"
+                                    <a href="/clubs/edit/{{$club->id}}"
                                        class="btn btn-primary mx-1">Edit</a>
-                                    <a href="{{url()->current()}}/delete/{{$club->id}}" class="btn btn-danger mx-1">Remove</a>
+                                    <a href="/clubs/delete/{{$club->id}}" class="btn btn-danger mx-1">Remove</a>
                                 @endif
 
                             </div>

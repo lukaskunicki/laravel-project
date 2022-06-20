@@ -14,7 +14,7 @@ class NationalitiesController extends Controller
 
         return view("nationalities.index",
             [
-                "title" => "Nationalities",
+                "title" => "All Nationalities",
                 "nationalities" => $nationalities
             ]);
     }
@@ -26,7 +26,7 @@ class NationalitiesController extends Controller
         $players = $nationality->players()->get();
         return view("players.index",
             [
-                "title" => "All ". $nationality->name . " players",
+                "title" => "All " . $nationality->name . " players",
                 "players" => $players
             ]);
     }
@@ -38,17 +38,19 @@ class NationalitiesController extends Controller
         $nationality = Nationality::find($id);
         return view("nationalities.edit",
             [
+                "title" => "Edit " . $nationality->name . " nationality",
                 "nationality" => $nationality
             ]);
     }
 
     public function create()
     {
-        return view("nationalities.create");
+        return view("nationalities.create", ["title" => "Add new nationality"]);
     }
 
     public function add(Request $request)
     {
+        $this->validateFields($request);
         $nationality = new Nationality();
         $nationality->created_at = date('Y-m-d G:i:s');
         $this->populateFields($nationality, $request);
@@ -58,6 +60,7 @@ class NationalitiesController extends Controller
 
     public function update(Request $request, int $id)
     {
+        $this->validateFields($request);
         $this->secureUserPrivileges();
         $nationality = Nationality::find($id);
         $this->populateFields($nationality, $request);
@@ -78,6 +81,13 @@ class NationalitiesController extends Controller
     protected function secureUserPrivileges(): void
     {
         if (!Auth::user()->is_admin) redirect("/nationalities", 301);
+    }
+
+    protected function validateFields(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:255'
+        ]);
     }
 
     protected function populateFields($position, Request $request): void

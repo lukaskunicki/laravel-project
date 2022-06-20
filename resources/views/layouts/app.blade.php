@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
+<body {{ Auth::user() ? 'data-user-id='.Auth::id() : '' }}>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
@@ -49,7 +49,7 @@
                             <a class="dropdown-item" href="/players/">
                                 All players
                             </a>
-                            @if(Auth::user() && Auth::user()->is_admin)
+                            @if(Auth::user())
                                 <a class="dropdown-item" href="/players/create">
                                     New player
                                 </a>
@@ -66,7 +66,7 @@
                             <a class="dropdown-item" href="/clubs/">
                                 All Clubs
                             </a>
-                            @if(Auth::user() && Auth::user()->is_admin)
+                            @if(Auth::user())
                                 <a class="dropdown-item" href="/clubs/create">
                                     New Club
                                 </a>
@@ -163,6 +163,24 @@
     </nav>
 
     <main class="py-4">
+        @if ($errors->any())
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+        <div class="container">
+            <h1 class="py-5 text-center">{{ $title }}</h1>
+        </div>
         @yield('content')
     </main>
 </div>

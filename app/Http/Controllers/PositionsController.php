@@ -15,7 +15,7 @@ class PositionsController extends Controller
 
         return view("positions.index",
             [
-                "title" => "Positions",
+                "title" => "All positions",
                 "positions" => $positions
             ]);
     }
@@ -39,17 +39,19 @@ class PositionsController extends Controller
         $position = Position::find($id);
         return view("positions.edit",
             [
+                "title" => "Edit " . $position->name ." position",
                 "position" => $position
             ]);
     }
 
     public function create()
     {
-        return view("positions.create");
+        return view("positions.create", ["title" => "Create new position"]);
     }
 
     public function add(Request $request)
     {
+        $this->validateFields($request);
         $position = new Position();
         $position->created_at = date('Y-m-d G:i:s');
         $this->populateFields($position, $request);
@@ -59,6 +61,7 @@ class PositionsController extends Controller
 
     public function update(Request $request, int $id)
     {
+        $this->validateFields($request);
         $this->secureUserPrivileges();
         $position = Position::find($id);
         $this->populateFields($position, $request);
@@ -79,6 +82,14 @@ class PositionsController extends Controller
     protected function secureUserPrivileges(): void
     {
         if (!Auth::user()->is_admin) redirect("/leagues", 301);
+    }
+
+    protected function validateFields(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'short_name' => 'required|max:2',
+        ]);
     }
 
     protected function populateFields($position, Request $request): void

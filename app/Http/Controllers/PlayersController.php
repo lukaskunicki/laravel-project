@@ -57,6 +57,7 @@ class PlayersController extends Controller
 
         return view("players.edit",
             [
+                "title" => "Edit " . $player->name . " " . $player->lastname . " player",
                 "player" => $player,
                 "nationalities" => $nationalities,
                 "clubs" => $clubs,
@@ -67,11 +68,12 @@ class PlayersController extends Controller
     public function create()
     {
         $nationalities = Nationality::where('is_active', '=', true)->get();
-        $clubs = Club::where('is_active', '=', true)->get();
+        $clubs = Club::where('is_active', '=', true)->where('trainer_id', '=', Auth::id())->get();
         $positions = Position::where('is_active', '=', true)->get();
 
         return view("players.create",
             [
+                "title" => "Create new player",
                 "nationalities" => $nationalities,
                 "clubs" => $clubs,
                 "positions" => $positions
@@ -80,6 +82,7 @@ class PlayersController extends Controller
 
     public function add(Request $request)
     {
+        $this->validateFields($request);
         $player = new Player();
         $player->created_at = date('Y-m-d G:i:s');
         $positions = Position::all()->pluck('id')->toArray();
@@ -95,6 +98,7 @@ class PlayersController extends Controller
 
     public function update(Request $request, int $id)
     {
+        $this->validateFields($request);
         $player = Player::with(['positions', 'club', 'nationality'])->find($id);
         $this->secureUserPrivileges($player);
         $positions = Position::all()->pluck('id')->toArray();
@@ -123,6 +127,19 @@ class PlayersController extends Controller
         $userId = Auth::id();
         $club = Club::find($player->club_id);
         if ($club->trainer_id !== $userId) redirect("/players", 301);
+    }
+
+    protected function validateFields(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:255',
+            'lastname' => 'required|max:255',
+            'height' => 'required',
+            'weight' => 'required',
+            'born_date' => 'required|date',
+            'nationality_id' => 'required',
+            'club_id' => 'required',
+        ]);
     }
 
     protected function populateFields($player, Request $request): void
