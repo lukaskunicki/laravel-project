@@ -9,10 +9,11 @@
                         Edit {{$league->name}} league
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="/leagues/update/{{$league->id}}">
+                        <form method="POST" action="/leagues/update/{{$league->id}}" class="validate-form">
                             @csrf
                             <div class="form-group p-2">
                                 <label for="name">Name</label>
+                                <span />
                                 <input required type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{$league->name}}">
                             </div>
                             <div class="form-group p-2">

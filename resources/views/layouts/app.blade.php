@@ -178,9 +178,11 @@
                 </div>
             </div>
         @endif
-        <div class="container">
-            <h1 class="py-5 text-center">{{ $title }}</h1>
-        </div>
+        @if(isset($title))
+            <div class="container">
+                <h1 class="py-5 text-center">{{ $title }}</h1>
+            </div>
+        @endif
         @yield('content')
     </main>
 </div>

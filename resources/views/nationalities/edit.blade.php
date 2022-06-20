@@ -9,11 +9,12 @@
                         Edit {{$nationality->name}} nationality
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="/nationalities/update/{{$nationality->id}}">
+                        <form method="POST" action="/nationalities/update/{{$nationality->id}}" class="validate-form">
                             @csrf
                             <div class="form-group p-2">
                                 <label for="name">Name</label>
                                 <input required type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{$nationality->name}}">
+                                <span />
                             </div>
                             <button type="submit" class="btn btn-primary m-3 px-5">Edit</button>
                         </form>

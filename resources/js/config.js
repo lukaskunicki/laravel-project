@@ -73,3 +73,11 @@ export const getCardTemplate = (templateName, card) => {
             </div>`;
 	}
 };
+
+export const validationRules = [
+	{name: 'name', regex: /^([^0-9]*)$/},
+	{name: 'lastname', regex: /^([^0-9]*)$/},
+	{name: 'height', regex: /^\d+$/},
+	{name: 'weight', regex: /^\d+$/},
+	{name: 'short_name', regex: /^([^0-9]*)$/}
+];

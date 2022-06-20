@@ -9,15 +9,17 @@
                         Add a new Position
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="/positions/add">
+                        <form method="POST" action="/positions/add" class="validate-form">
                             @csrf
                             <div class="form-group p-2">
                                 <label for="name">Name</label>
                                 <input required type="text" class="form-control" id="name" name="name" placeholder="Name">
+                                <span />
                             </div>
                             <div class="form-group p-2">
                                 <label for="short_name">Short name</label>
                                 <input type="text" class="form-control" id="name" name="short_name" placeholder="Short name">
+                                <span />
                             </div>
                             <button type="submit" class="btn btn-primary m-3 px-5">Create</button>
                         </form>

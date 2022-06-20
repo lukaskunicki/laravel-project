@@ -10315,3 +10315,11 @@ textarea.form-control-lg {
   -webkit-animation: spin 2s linear infinite;
           animation: spin 2s linear infinite;
 }
+
+form.validate-form input.invalid {
+  border: 2px solid red;
+}
+form.validate-form input.invalid ~ span:after {
+  content: "Invalid field value!";
+  color: red;
+}

@@ -9,11 +9,12 @@
                         Add a new League
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="/leagues/add">
+                        <form method="POST" action="/leagues/add" class="validate-form">
                             @csrf
                             <div class="form-group p-2">
                                 <label for="name">Name</label>
                                 <input required type="text" class="form-control" id="name" name="name" placeholder="Name">
+                                <span />
                             </div>
                             <div class="form-group p-2">
                                 <label for="start_date">Start date</label>

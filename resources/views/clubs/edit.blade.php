@@ -14,6 +14,7 @@
                             <div class="form-group p-2">
                                 <label for="name">Name</label>
                                 <input required type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{$club->name}}">
+                                <span />
                             </div>
                             <div class="form-group p-2">
                                 <label for="foundation_date">Foundation date</label>
