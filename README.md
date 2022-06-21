@@ -7,20 +7,22 @@ A Laravel-based web application prepared as a university project.
 The application follows the MVC conception, where we can distinguish these five main models:
 
 - Player
+
   Each logged in user can create a player assigned to his club. Later on, the user can update or delete the player. Listing players is available for everyone.
 
 - Club
-
-  Each logged in user can create a club and assignee it to the league. Later on, the user can update or delete the club. Listing clubs is available for everyone. Listing clubs and associated players is a available for everyone
+    Each logged in user can create a club and assignee it to the league. Later on, the user can update or delete the club. Listing clubs is available for everyone. Listing clubs and associated players is a available for everyone
 
 - League
 
   Each logged in admin user can create a league, update, or delete it. Listing leagues and associated clubs is available for everyone.
 
 - Position
+
   Each logged in admin user can create a position, update, or delete it. Listing positions and associated players is available for everyone.
 
 - Nationality
+
   Each logged in admin user can create a nationality, update, or delete it. Listing nations and associated players is available for everyone.
 
 CRUD operations have been prepared for all of them, taking into the consideration different user roles.
