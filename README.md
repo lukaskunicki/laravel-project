@@ -2,7 +2,7 @@
 
 A Laravel-based web application prepared as a university project.
 
-**Structure**
+### Structure
 
 The application follows the MVC conception, where we can distinguish these five main models:
 
@@ -35,7 +35,7 @@ Routes have been defined for all the paths, including the authentication middlew
 
 The frontend layer has been prepared with bootstrap ui.
 
-**Running the app**
+### Running the app
 
 1. Make sure that you've installed all the dependencies with `composer install`
 2. Install the frontend dependencies with `npm install && npm run dev`
