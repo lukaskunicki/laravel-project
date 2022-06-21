@@ -2,11 +2,12 @@
 
 A Laravel-based web application prepared as a university project.
 
-**Structure**
+### Structure
 
 The application follows the MVC conception, where we can distinguish these five main models:
 
 - Player
+
   Each logged in user can create a player assigned to his club. Later on, the user can update or delete the player. Listing players is available for everyone.
 
 - Club
@@ -18,9 +19,11 @@ The application follows the MVC conception, where we can distinguish these five 
   Each logged in admin user can create a league, update, or delete it. Listing leagues and associated clubs is available for everyone.
 
 - Position
+
   Each logged in admin user can create a position, update, or delete it. Listing positions and associated players is available for everyone.
 
 - Nationality
+
   Each logged in admin user can create a nationality, update, or delete it. Listing nations and associated players is available for everyone.
 
 CRUD operations have been prepared for all of them, taking into the consideration different user roles.
@@ -35,7 +38,7 @@ Routes have been defined for all the paths, including the authentication middlew
 
 The frontend layer has been prepared with bootstrap ui.
 
-**Running the app**
+### Running the app
 
 1. Make sure that you've installed all the dependencies with `composer install`
 2. Install the frontend dependencies with `npm install && npm run dev`
