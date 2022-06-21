@@ -11,7 +11,8 @@ The application follows the MVC conception, where we can distinguish these five 
   Each logged in user can create a player assigned to his club. Later on, the user can update or delete the player. Listing players is available for everyone.
 
 - Club
-    Each logged in user can create a club and assignee it to the league. Later on, the user can update or delete the club. Listing clubs is available for everyone. Listing clubs and associated players is a available for everyone
+
+  Each logged in user can create a club and assignee it to the league. Later on, the user can update or delete the club. Listing clubs is available for everyone. Listing clubs and associated players is a available for everyone
 
 - League
 
