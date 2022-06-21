@@ -46,7 +46,7 @@ class LeaguesController extends Controller
 
     public function create()
     {
-        return view("leagues.create", []);
+        return view("leagues.create", ["title" => "Add league"]);
     }
 
     public function add(Request $request)
